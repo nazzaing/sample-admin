@@ -1,0 +1,62 @@
+:root {
+    --bg-body: #F3F4F6;
+    --bg-content: #FAFAFA;
+    --text-color: #2C2C2C;
+    --sidebar-bg: #FFFFFF;
+    --hover-bg: #E0E7FF;
+    --accent: #3B82F6;
+    --section-title-color: #6C757D;
+    --btn-bg: #FFFFFF;
+    --btn-color: #2C2C2C;
+    --btn-border: #CCCCCC;
+}
+
+[data-theme="dark"] {
+    --bg-body: #1E1E1E;
+    --bg-content: #2A2A2A;
+    --text-color: #F1F1F1;
+    --sidebar-bg: #1A1A1A;
+    --hover-bg: #333C4F;
+    --accent: #4EA8FF;
+    --section-title-color: #CCCCCC;
+    --btn-bg: #2A2A2A;
+    --btn-color: #F1F1F1;
+    --btn-border: #444;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-color);
+}
+
+.header {
+    background-color: var(--accent);
+    color: #fff;
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+}
+
+.sidebar .nav-link {
+    color: var(--text-color);
+    border-radius: 6px; /* ← 둥글게 */
+    padding: 8px 12px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--hover-bg);
+    color: var(--accent);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--hover-bg);
+    color: var(--accent);
+    font-weight: bold;
+}
+
+main {
+    background-color: var(--bg-content);
+    color: var(--text-color);
+}
