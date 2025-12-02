@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ko"
+      layout:decorate="~{fragments/layout}">
+<body>
+<div layout:fragment="content">
+  <div class="container-fluid">
+    <div class="mb-4">
+      <h4 class="fw-bold">Form Layout</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <div class="card-block">
+          <h5 class="mb-3 fw-semibold">Input & Textarea States</h5>
+          <hr class="mb-4 mt-0">
+
+          <div class="row g-4">
+            <!-- Input States -->
+            <div class="col-md-6">
+              <label for="emailError" class="form-label">Email (Error)</label>
+              <div class="position-relative">
+                <input type="email" class="form-control is-invalid" id="emailError" value="demoemail">
+                <div class="invalid-feedback">This is an error message.</div>
+              </div>
+
+              <label for="emailSuccess" class="form-label mt-4">Email (Success)</label>
+              <div class="position-relative">
+                <input type="email" class="form-control is-valid" id="emailSuccess" value="demoemail@gmail.com">
+                <div class="valid-feedback">This is a success message.</div>
+              </div>
+            </div>
+
+            <!-- Textarea States -->
+            <div class="col-md-6">
+              <label for="descNormal" class="form-label">Description (Normal)</label>
+              <textarea class="form-control" id="descNormal" rows="3" placeholder="Enter a description..."></textarea>
+
+              <label for="descDisabled" class="form-label mt-4">Description (Disabled)</label>
+              <textarea class="form-control" id="descDisabled" rows="3" placeholder="Disabled textarea..." disabled></textarea>
+
+              <label for="descError" class="form-label mt-4">Description (Error)</label>
+              <textarea class="form-control is-invalid" id="descError" rows="3" placeholder="Enter a message..."></textarea>
+              <div class="invalid-feedback">Please enter a message in the textarea.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

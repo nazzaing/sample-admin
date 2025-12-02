@@ -1,6 +1,7 @@
 :root {
     --bg-body: #F3F4F6;
-    --bg-content: #FAFAFA;
+    --bg-content: #FAFAFA;   /* 메인 영역 배경 */
+    --bg-card: #FFFFFF;      /* 카드 전용 배경 (더 밝게) */
     --text-color: #2C2C2C;
     --sidebar-bg: #FFFFFF;
     --hover-bg: #E0E7FF;
@@ -13,7 +14,8 @@
 
 [data-theme="dark"] {
     --bg-body: #1E1E1E;
-    --bg-content: #2A2A2A;
+    --bg-content: #2A2A2A;   /* 메인 영역 배경 */
+    --bg-card: #333333;      /* 카드 전용 배경 (메인보다 밝게) */
     --text-color: #F1F1F1;
     --sidebar-bg: #1A1A1A;
     --hover-bg: #333C4F;
@@ -29,6 +31,11 @@ body {
     color: var(--text-color);
 }
 
+main {
+    background-color: var(--bg-content);
+    color: var(--text-color);
+}
+
 .header {
     background-color: var(--accent);
     color: #fff;
@@ -39,9 +46,11 @@ body {
 }
 
 .sidebar .nav-link {
+    font-size: 0.85rem;   /* 기본보다 살짝 작게 */
+    line-height: 1.4;     /* 줄 간격 조금 넉넉하게 */
     color: var(--text-color);
-    border-radius: 6px; /* ← 둥글게 */
-    padding: 8px 12px;
+    border-radius: 6px;
+    padding: 6px 10px;    /* 패딩도 살짝 줄여서 더 컴팩트하게 */
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -53,10 +62,55 @@ body {
 .sidebar .nav-link.active {
     background-color: var(--hover-bg);
     color: var(--accent);
-    font-weight: bold;
+    font-weight: 600;     /* bold 대신 semi-bold로 깔끔하게 */
 }
 
-main {
-    background-color: var(--bg-content);
+.sidebar-section-title {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--section-title-color);
+    margin-bottom: 0.75rem;
+}
+
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+/* 카드 공통 스타일 */
+.card-block {
+    background-color: var(--bg-card);
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;       /* ← 모서리 더 둥글게 */
+    padding: 1.5rem;           /* p-4와 동일 */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* 은은한 그림자 */
+}
+
+/* 카드 제목 */
+.card-block h5 {
+    font-size: 0.95rem;        /* 사이드바 nav-link보다 살짝 크게 */
+    font-weight: 600;          /* semi-bold */
     color: var(--text-color);
+    margin-bottom: 0.75rem;
+}
+
+/* 카드 내부 라벨 */
+.card-block .form-label {
+    font-size: 0.85rem;        /* 사이드바와 동일한 크기 */
+    font-weight: 500;          /* 중간 두께 */
+    color: var(--text-color);
+}
+
+/* 카드 내부 input */
+.card-block .form-control,
+.card-block .form-select {
+    font-size: 0.85rem;        /* 사이드바와 통일 */
+    border-radius: 8px;        /* input도 둥글게 */
+}
+
+/* 버튼 */
+.card-block .btn {
+    font-size: 0.85rem;
+    border-radius: 8px;
 }

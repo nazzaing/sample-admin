@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ko"
+      layout:decorate="~{fragments/layout}">
+<body>
+<div layout:fragment="content">
+  <div class="container-fluid">
+    <div class="mb-4">
+      <h4 class="fw-bold">Form Layout</h4>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <div class="card-block">
+          <h5 class="mb-3 fw-semibold">Selection Inputs</h5>
+          <hr class="mb-4 mt-0">
+
+          <div class="row g-4">
+            <!-- Checkboxes -->
+            <div class="col-md-4">
+              <label class="form-label d-block mb-2">Checkboxes</label>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="checkDefault">
+                <label class="form-check-label" for="checkDefault">Default</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="checkChecked" checked>
+                <label class="form-check-label" for="checkChecked">Checked</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" id="checkDisabled" checked disabled>
+                <label class="form-check-label text-muted" for="checkDisabled">Disabled</label>
+              </div>
+            </div>
+
+            <!-- Radio Buttons -->
+            <div class="col-md-4">
+              <label class="form-label d-block mb-2">Radio Buttons</label>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radioDefault">
+                <label class="form-check-label" for="radioDefault">Default</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radioChecked" checked>
+                <label class="form-check-label" for="radioChecked">Secondary</label>
+              </div>
+              <div class="form-check mb-2">
+                <input class="form-check-input" type="radio" name="radioGroup" id="radioDisabled" checked disabled>
+                <label class="form-check-label text-muted" for="radioDisabled">Disabled Secondary</label>
+              </div>
+            </div>
+
+            <!-- Toggle Switches -->
+            <div class="col-md-4">
+              <label class="form-label d-block mb-2">Toggle Switches</label>
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="switchDefault">
+                <label class="form-check-label" for="switchDefault">Default</label>
+              </div>
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="switchChecked" checked>
+                <label class="form-check-label" for="switchChecked">Checked</label>
+              </div>
+              <div class="form-check form-switch mb-2">
+                <input class="form-check-input" type="checkbox" id="switchDisabled" disabled>
+                <label class="form-check-label text-muted" for="switchDisabled">Disabled</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,72 +1,89 @@
 <div class="sidebar border-end" style="width: 240px;" th:fragment="sidebar">
     <div class="p-3">
-        <h6 class="text-uppercase mb-3" style="color: var(--section-title-color);">Menu</h6>
+        <p class="sidebar-section-title">Menu</p>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/}">
                     <i class="bi bi-grid me-2"></i> Dashboard
                 </a>
             </li>
+
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#formsSubmenu" role="button" aria-expanded="false" aria-controls="formsSubmenu">
+                <a class="nav-link d-flex justify-content-between align-items-center"
+                   data-bs-toggle="collapse"
+                   href="#formsSubmenu"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="formsSubmenu">
                     <span><i class="bi bi-file-earmark-text me-2"></i> Forms</span>
                     <i class="bi bi-chevron-down"></i>
                 </a>
                 <div class="collapse ps-4 mt-2" id="formsSubmenu">
                     <ul class="nav flex-column">
                         <li class="nav-item mb-1">
-                            <a class="nav-link active" href="#">Form Elements</a>
+                            <a class="nav-link" th:href="@{/forms/formElements}">Form Elements</a>
                         </li>
                         <li class="nav-item mb-1">
-                            <a class="nav-link" href="#">Form Layout</a>
+                            <a class="nav-link" th:href="@{/forms/formLayout}">Form Layout</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/forms/formButton}">Form Button</a>
                         </li>
                     </ul>
                 </div>
             </li>
+
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/e-commerce}">
                     <i class="bi bi-cart me-2"></i> E-commerce
                     <span class="badge bg-success ms-auto">NEW</span>
                 </a>
             </li>
+
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/calendar}">
                     <i class="bi bi-calendar me-2"></i> Calendar
                 </a>
             </li>
+
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex justify-content-between align-items-center" data-bs-toggle="collapse" href="#taskSubmenu" role="button" aria-expanded="false" aria-controls="taskSubmenu">
+                <a class="nav-link d-flex justify-content-between align-items-center"
+                   data-bs-toggle="collapse"
+                   href="#taskSubmenu"
+                   role="button"
+                   aria-expanded="false"
+                   aria-controls="taskSubmenu">
                     <span><i class="bi bi-check-square me-2"></i> Task</span>
                     <i class="bi bi-chevron-down"></i>
                 </a>
                 <div class="collapse ps-4 mt-2" id="taskSubmenu">
                     <ul class="nav flex-column">
                         <li class="nav-item mb-1">
-                            <a class="nav-link" href="#">My Tasks</a>
+                            <a class="nav-link" th:href="@{/tasks/my}">My Tasks</a>
                         </li>
                         <li class="nav-item mb-1">
-                            <a class="nav-link" href="#">Team Tasks</a>
+                            <a class="nav-link" th:href="@{/tasks/team}">Team Tasks</a>
                         </li>
                     </ul>
                 </div>
             </li>
         </ul>
 
-        <h6 class="text-uppercase mt-4 mb-3" style="color: var(--section-title-color);">Support</h6>
+        <p class="sidebar-section-title">Support</p>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/chat}">
                     <i class="bi bi-chat-dots me-2"></i> Chat
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/support}">
                     <i class="bi bi-headset me-2"></i> Support Ticket
                     <span class="badge bg-success ms-auto">NEW</span>
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" href="#">
+                <a class="nav-link d-flex align-items-center" th:href="@{/email}">
                     <i class="bi bi-envelope me-2"></i> Email
                 </a>
             </li>

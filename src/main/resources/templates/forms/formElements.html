@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ko"
+      layout:decorate="~{fragments/layout}">
+<body>
+<div layout:fragment="content">
+  <div class="container-fluid">
+    <div class="mb-4">
+      <h4 class="fw-bold">Form Elements</h4>
+    </div>
+
+    <div class="row">
+      <!-- Default Inputs -->
+      <div class="col-md-6">
+        <div class="card-block">
+          <h5>Default Inputs</h5>
+          <hr class="mb-4 mt-0">
+
+          <div class="mb-3">
+            <label for="basicInput" class="form-label">Input</label>
+            <input type="text" class="form-control" id="basicInput" placeholder="텍스트를 입력하세요">
+          </div>
+          <div class="mb-3">
+            <label for="emailInput" class="form-label">Input with Placeholder</label>
+            <input type="email" class="form-control" id="emailInput" placeholder="info@gmail.com">
+          </div>
+          <div class="mb-3">
+            <label for="selectInput" class="form-label">Select Input</label>
+            <select class="form-select" id="selectInput">
+              <option selected>옵션 선택</option>
+              <option value="1">옵션 1</option>
+              <option value="2">옵션 2</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password Input</label>
+            <input type="password" class="form-control" id="passwordInput" placeholder="비밀번호 입력">
+          </div>
+          <div class="mb-3">
+            <label for="dateInput" class="form-label">Date Picker Input</label>
+            <input type="date" class="form-control" id="dateInput">
+          </div>
+          <div class="mb-3">
+            <label for="timeInput" class="form-label">Time Select Input</label>
+            <input type="time" class="form-control" id="timeInput">
+          </div>
+          <div class="mb-3">
+            <label for="cardInput" class="form-label">Input with Payment</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-credit-card"></i></span>
+              <input type="text" class="form-control" id="cardInput" placeholder="카드 번호 입력">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Input Group -->
+      <div class="col-md-6">
+        <div class="card-block">
+          <h5>Input Group</h5>
+          <hr class="mb-4 mt-0">
+
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text">@</span>
+              <input type="email" class="form-control" placeholder="info@gmail.com">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <div class="input-group">
+              <select class="form-select" style="max-width: 100px;">
+                <option selected>+82</option>
+                <option>+1</option>
+                <option>+44</option>
+              </select>
+              <input type="tel" class="form-control" placeholder="010-0000-0000">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">URL</label>
+            <div class="input-group">
+              <span class="input-group-text">http://</span>
+              <input type="text" class="form-control" placeholder="www.tailadmin.com">
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Website</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="www.tailadmin.com">
+              <button class="btn btn-outline-secondary" type="button">Copy</button>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="fileInput" class="form-label">File Input</label>
+            <input class="form-control" type="file" id="fileInput">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
