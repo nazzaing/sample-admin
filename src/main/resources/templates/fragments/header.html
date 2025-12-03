@@ -1,13 +1,31 @@
 <div class="header px-4 py-3 border-bottom d-flex align-items-center justify-content-between" th:fragment="header">
-    <h4 class="mb-0">관리자 페이지</h4>
-    <div class="ms-auto">
+    <div class="d-flex align-items-center ms-auto gap-3">
+        <!-- 테마 토글 버튼 -->
         <button id="themeToggle"
                 class="btn rounded-circle d-flex justify-content-center align-items-center"
                 style="width: 40px; height: 40px;
-                   background-color: var(--btn-bg);
-                   color: var(--btn-color);
-                   border: 1px solid var(--btn-border);">
+                       background-color: var(--btn-bg);
+                       color: var(--btn-color);
+                       border: 1px solid var(--btn-border);">
             <i class="bi bi-moon" id="themeIcon" style="font-size: 1.2rem;"></i>
         </button>
+
+        <!-- 사용자 아이콘 + Dropdown -->
+        <div class="dropdown">
+            <button class="btn rounded-circle d-flex justify-content-center align-items-center"
+                    style="width: 40px; height: 40px;
+                           background-color: var(--btn-bg);
+                           color: var(--btn-color);
+                           border: 1px solid var(--btn-border);"
+                    id="userMenuButton"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <i class="bi bi-person-circle" style="font-size: 1.4rem;"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+                <li><a class="dropdown-item" th:href="@{/user/profile}">내 정보</a></li>
+                <li><a class="dropdown-item" th:href="@{/logout}">로그아웃</a></li>
+            </ul>
+        </div>
     </div>
 </div>

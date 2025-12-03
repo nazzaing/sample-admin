@@ -7,9 +7,12 @@
     --accent: #3B82F6;
     --hover-bg: #E0E7FF;
     --section-title-color: #6C757D;
-    --btn-bg: #FFFFFF;
-    --btn-color: #2C2C2C;
+    --btn-bg: var(--bg-card);
+    --btn-color: var(--text-color);
     --btn-border: #CCCCCC;
+    --dropdown-bg: var(--bg-card);
+    --dropdown-color: var(--text-color);
+    --border-color: #e4e7ec;
 }
 
 [data-theme="dark"] {
@@ -21,9 +24,12 @@
     --accent: #4EA8FF;
     --hover-bg: #333C4F;
     --section-title-color: #CCCCCC;
-    --btn-bg: #2A2A2A;
-    --btn-color: #F1F1F1;
+    --btn-bg: var(--bg-card);
+    --btn-color: var(--text-color);
     --btn-border: #444;
+    --dropdown-bg: var(--bg-card);
+    --dropdown-color: var(--text-color);
+    --border-color: #1d2939;
 }
 
 body {
@@ -38,7 +44,15 @@ main {
 
 .header {
     background-color: var(--layout-bg);
-    color: #fff;
+    color: var(--text-color);
+}
+
+.header, .sidebar, main, footer {
+    border-color: var(--border-color) !important;
+}
+
+footer {
+    border-top: 1px solid var(--border-color) !important;
 }
 
 .sidebar {
@@ -123,4 +137,24 @@ main {
 .card-block .btn {
     font-size: 0.85rem;
     border-radius: 8px;
+}
+
+.dropdown-menu {
+    background-color: var(--dropdown-bg);
+    color: var(--dropdown-color);
+    border-radius: 8px; /* 메뉴 자체도 둥글게 */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* 기본 그림자 */
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu .dropdown-item {
+    color: var(--dropdown-color);
+    border-radius: 6px; /* 항목도 둥글게 */
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: var(--hover-bg); /* hover 배경 강조 */
+    color: var(--accent);              /* hover 시 포인트 색상 */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12); /* hover 시 그림자 강조 */
 }
