@@ -1,11 +1,11 @@
 :root {
     --bg-body: #F3F4F6;
-    --bg-content: #FAFAFA;   /* 메인 영역 배경 */
+    --bg-content: #F9FAFB;   /* 메인 영역 배경 */
     --bg-card: #FFFFFF;      /* 카드 전용 배경 (더 밝게) */
     --text-color: #2C2C2C;
-    --sidebar-bg: #FFFFFF;
-    --hover-bg: #E0E7FF;
+    --layout-bg: #FFFFFF;
     --accent: #3B82F6;
+    --hover-bg: #E0E7FF;
     --section-title-color: #6C757D;
     --btn-bg: #FFFFFF;
     --btn-color: #2C2C2C;
@@ -14,12 +14,12 @@
 
 [data-theme="dark"] {
     --bg-body: #1E1E1E;
-    --bg-content: #2A2A2A;   /* 메인 영역 배경 */
-    --bg-card: #333333;      /* 카드 전용 배경 (메인보다 밝게) */
+    --bg-content: #101828;   /* 메인 영역 배경 */
+    --bg-card: #1d2939;      /* 카드 전용 배경 (메인보다 밝게) */
     --text-color: #F1F1F1;
-    --sidebar-bg: #1A1A1A;
-    --hover-bg: #333C4F;
+    --layout-bg: #101828;
     --accent: #4EA8FF;
+    --hover-bg: #333C4F;
     --section-title-color: #CCCCCC;
     --btn-bg: #2A2A2A;
     --btn-color: #F1F1F1;
@@ -27,7 +27,7 @@
 }
 
 body {
-    background-color: var(--bg-body);
+    background-color: var(--layout-bg);
     color: var(--text-color);
 }
 
@@ -37,12 +37,12 @@ main {
 }
 
 .header {
-    background-color: var(--accent);
+    background-color: var(--layout-bg);
     color: #fff;
 }
 
 .sidebar {
-    background-color: var(--sidebar-bg);
+    background-color: var(--layout-bg);
 }
 
 .sidebar .nav-link {
@@ -52,6 +52,16 @@ main {
     border-radius: 6px;
     padding: 6px 10px;    /* 패딩도 살짝 줄여서 더 컴팩트하게 */
     transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar button.nav-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
 }
 
 .sidebar .nav-link:hover {

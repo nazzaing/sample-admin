@@ -1,90 +1,143 @@
 <div class="sidebar border-end" style="width: 240px;" th:fragment="sidebar">
     <div class="p-3">
-        <p class="sidebar-section-title">Menu</p>
+
+        <!-- 사이트 마크 영역 -->
+        <div class="sidebar-brand text-center mb-4">
+            <!-- 이미지 로고 -->
+            <!--<img src="/images/logo.png" alt="사이트 로고" class="img-fluid" style="max-height: 40px;">-->
+            <!-- 텍스트 로고 (이미지 대신 사용 가능) -->
+             <h5 class="mt-2">PASTA</h5> 
+        </div>
+
+        <!-- 메뉴 시작 -->
+        <p class="sidebar-section-title">어드민</p>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/}">
-                    <i class="bi bi-grid me-2"></i> Dashboard
+                <a class="nav-link d-flex align-items-center" th:href="@{/admin/code}">
+                    <i class="bi bi-person-fill fs-5 me-2"></i> 어드민 코드
                 </a>
             </li>
-
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex justify-content-between align-items-center"
-                   data-bs-toggle="collapse"
-                   href="#formsSubmenu"
-                   role="button"
-                   aria-expanded="false"
-                   aria-controls="formsSubmenu">
-                    <span><i class="bi bi-file-earmark-text me-2"></i> Forms</span>
-                    <i class="bi bi-chevron-down"></i>
-                </a>
-                <div class="collapse ps-4 mt-2" id="formsSubmenu">
+                <button class="nav-link d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#adminSubmenu"
+                        th:attr="aria-expanded=${openCollapse == 'adminSubmenu'}"
+                        aria-controls="adminSubmenu">
+                    <span><i class="bi bi-person-fill-gear fs-5 me-2"></i> 어드민 관리</span>
+                    <i class="bi bi-chevron-down"
+                       th:classappend="${openCollapse == 'adminSubmenu'} ? ' rotate-180' : ''"></i>
+                </button>
+                <div class="collapse ps-4 mt-2"
+                     id="adminSubmenu"
+                     th:classappend="${openCollapse == 'adminSubmenu'} ? ' show' : ''">
                     <ul class="nav flex-column">
                         <li class="nav-item mb-1">
-                            <a class="nav-link" th:href="@{/forms/formElements}">Form Elements</a>
+                            <a class="nav-link" th:href="@{/admin/info/list}">어드민 리스트</a>
                         </li>
                         <li class="nav-item mb-1">
-                            <a class="nav-link" th:href="@{/forms/formLayout}">Form Layout</a>
+                            <a class="nav-link" th:href="@{/admin/menu/list}">어드민 메뉴 정보</a>
                         </li>
                         <li class="nav-item mb-1">
-                            <a class="nav-link" th:href="@{/forms/formButton}">Form Button</a>
+                            <a class="nav-link" th:href="@{/admin/role/list}">어드민 권한 정보</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/admin/revision/list}">어드민 변경 알림</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/admin/syncResult/list}">어드민 연동 작업결과</a>
                         </li>
                     </ul>
                 </div>
             </li>
-
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/e-commerce}">
-                    <i class="bi bi-cart me-2"></i> E-commerce
-                    <span class="badge bg-success ms-auto">NEW</span>
-                </a>
-            </li>
-
-            <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/calendar}">
-                    <i class="bi bi-calendar me-2"></i> Calendar
-                </a>
-            </li>
-
-            <li class="nav-item mb-2">
-                <a class="nav-link d-flex justify-content-between align-items-center"
-                   data-bs-toggle="collapse"
-                   href="#taskSubmenu"
-                   role="button"
-                   aria-expanded="false"
-                   aria-controls="taskSubmenu">
-                    <span><i class="bi bi-check-square me-2"></i> Task</span>
-                    <i class="bi bi-chevron-down"></i>
-                </a>
-                <div class="collapse ps-4 mt-2" id="taskSubmenu">
+                <button class="nav-link d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#adminUserSubmenu"
+                        th:attr="aria-expanded=${openCollapse == 'adminUserSubmenu'}"
+                        aria-controls="adminUserSubmenu">
+                    <span><i class="bi bi-person-fill-gear fs-5 me-2"></i>어드민 사용자 관리</span>
+                    <i class="bi bi-chevron-down"
+                       th:classappend="${openCollapse == 'adminUserSubmenu'} ? ' rotate-180' : ''"></i>
+                </button>
+                <div class="collapse ps-4 mt-2"
+                     id="adminUserSubmenu"
+                     th:classappend="${openCollapse == 'adminUserSubmenu'} ? ' show' : ''">
                     <ul class="nav flex-column">
                         <li class="nav-item mb-1">
-                            <a class="nav-link" th:href="@{/tasks/my}">My Tasks</a>
+                            <a class="nav-link" th:href="@{/adminUser/all/list}">전체 어드민 사용자 리스트</a>
                         </li>
                         <li class="nav-item mb-1">
-                            <a class="nav-link" th:href="@{/tasks/team}">Team Tasks</a>
+                            <a class="nav-link" th:href="@{/adminUser/list}">어드민 사용자 리스트</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/adminUser/detail/list}">어드미 사용자 상세 정보</a>
                         </li>
                     </ul>
                 </div>
             </li>
         </ul>
 
-        <p class="sidebar-section-title">Support</p>
+        <p class="sidebar-section-title">통계 관리</p>
         <ul class="nav flex-column">
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/chat}">
-                    <i class="bi bi-chat-dots me-2"></i> Chat
+                <button class="nav-link d-flex justify-content-between align-items-center"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#statisticSubmenu"
+                        th:attr="aria-expanded=${openCollapse == 'statisticSubmenu'}"
+                        aria-controls="statisticSubmenu">
+                    <span><i class="bi bi-clipboard-data-fill fs-5 me-2"></i>개인정보 취급자</span>
+                    <i class="bi bi-chevron-down"
+                       th:classappend="${openCollapse == 'statisticSubmenu'} ? ' rotate-180' : ''"></i>
+                </button>
+                <div class="collapse ps-4 mt-2"
+                     id="statisticSubmenu"
+                     th:classappend="${openCollapse == 'statisticSubmenu'} ? ' show' : ''">
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/statistic/status}">현황</a>
+                        </li>
+                        <li class="nav-item mb-1">
+                            <a class="nav-link" th:href="@{/statistic/company/status}">소속별 현황</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+
+        <p class="sidebar-section-title">Form</p>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a class="nav-link d-flex align-items-center" th:href="@{/form/layout}">
+                    <i class="bi bi-grid-1x2-fill fs-5 me-2"></i> layout
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/support}">
-                    <i class="bi bi-headset me-2"></i> Support Ticket
-                    <span class="badge bg-success ms-auto">NEW</span>
+                <a class="nav-link d-flex align-items-center" th:href="@{/form/element}">
+                    <i class="bi bi-grid-fill fs-5 me-2"></i> element
                 </a>
             </li>
             <li class="nav-item mb-2">
-                <a class="nav-link d-flex align-items-center" th:href="@{/email}">
-                    <i class="bi bi-envelope me-2"></i> Email
+                <a class="nav-link d-flex align-items-center" th:href="@{/form/button}">
+                    <i class="bi bi-menu-button-fill fs-5 me-2"></i> button
+                </a>
+            </li>
+        </ul>
+
+        <p class="sidebar-section-title">설정</p>
+        <ul class="nav flex-column">
+            <li class="nav-item mb-2">
+                <a class="nav-link d-flex align-items-center" th:href="@{/config/user/list}">
+                    <i class="bi bi-person-fill-gear fs-5 me-2"></i> 사용자 관리
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link d-flex align-items-center" th:href="@{/config/role/list}">
+                    <i class="bi bi-shield-lock-fill fs-5 me-2"></i> 권한 관리
+                </a>
+            </li>
+            <li class="nav-item mb-2">
+                <a class="nav-link d-flex align-items-center" th:href="@{/config/log/list}">
+                    <i class="bi bi-file-earmark-text-fill fs-5 me-2"></i> 로깅
                 </a>
             </li>
         </ul>

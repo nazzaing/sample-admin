@@ -15,19 +15,4 @@ public class MainController {
     public String eCommerce() {
         return "eCommerce";
     }
-    
-    @GetMapping("/forms/formElements")
-    public String formElements() {
-        return "forms/formElements";
-    }
-
-    @GetMapping("/forms/formButton")
-    public String formsFormButton() {
-        return "forms/formButton";
-    }
-    
-    @GetMapping("/forms/formLayout")
-    public String formsFormLayout() {
-        return "forms/formLayout";
-    }
 }

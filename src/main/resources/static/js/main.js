@@ -1,32 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // =========================
-    // Collapse 상태 복원 (페이지 로드 시)
-    // =========================
-    const openId = localStorage.getItem("openCollapse");
-    if (openId) {
-        const target = document.getElementById(openId);
-        if (target) {
-            new bootstrap.Collapse(target, { toggle: false }).show();
-            const trigger = document.querySelector(
-                `[data-bs-toggle="collapse"][href="#${openId}"], 
-         [data-bs-toggle="collapse"][data-bs-target="#${openId}"]`
-            );
-            if (trigger) trigger.setAttribute("aria-expanded", "true");
-        }
+    function getTrigger(id) {
+        return document.querySelector(
+            `[data-bs-toggle="collapse"][href="#${id}"],
+             [data-bs-toggle="collapse"][data-bs-target="#${id}"]`
+        );
+    }
+
+    function toggleChevron(trigger, rotate) {
+        if (!trigger) return;
+        trigger.setAttribute("aria-expanded", rotate ? "true" : "false");
+        const icon = trigger.querySelector(".bi-chevron-down");
+        if (icon) icon.classList.toggle("rotate-180", rotate);
     }
 
     // =========================
-    // Collapse 이벤트 (상태 저장, 단일 열림, 아이콘 회전)
+    // Collapse 이벤트 (단일 열림, 아이콘 회전)
     // =========================
     const collapses = document.querySelectorAll(".collapse");
     collapses.forEach(collapse => {
         const id = collapse.getAttribute("id");
-        const trigger = document.querySelector(
-            `[data-bs-toggle="collapse"][href="#${id}"], 
-       [data-bs-toggle="collapse"][data-bs-target="#${id}"]`
-        );
+        const trigger = getTrigger(id);
 
-        // 다른 collapse 닫기
         collapse.addEventListener("show.bs.collapse", function () {
             collapses.forEach(other => {
                 if (other !== collapse && other.classList.contains("show")) {
@@ -34,32 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     bsOther.hide();
                 }
             });
-            // 아이콘 즉시 회전
-            if (trigger) {
-                trigger.setAttribute("aria-expanded", "true");
-                const icon = trigger.querySelector(".bi-chevron-down");
-                if (icon) icon.classList.add("rotate-180");
-            }
+            toggleChevron(trigger, true);
         });
 
-        // 상태 저장
-        collapse.addEventListener("shown.bs.collapse", function () {
-            localStorage.setItem("openCollapse", id);
-        });
-
-        // 닫힐 때 아이콘 원복
         collapse.addEventListener("hide.bs.collapse", function () {
-            if (trigger) {
-                trigger.setAttribute("aria-expanded", "false");
-                const icon = trigger.querySelector(".bi-chevron-down");
-                if (icon) icon.classList.remove("rotate-180");
-            }
-        });
-
-        // 닫힌 뒤 상태 제거
-        collapse.addEventListener("hidden.bs.collapse", function () {
-            const saved = localStorage.getItem("openCollapse");
-            if (saved === id) localStorage.removeItem("openCollapse");
+            toggleChevron(trigger, false);
         });
     });
 
@@ -107,25 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 const collapseId = collapseWrapper.getAttribute("id");
                 const bsCollapse = bootstrap.Collapse.getInstance(collapseWrapper) || new bootstrap.Collapse(collapseWrapper, { toggle: false });
                 bsCollapse.show();
-
-                const trigger = document.querySelector(
-                    `[data-bs-toggle="collapse"][href="#${collapseId}"], 
-           [data-bs-toggle="collapse"][data-bs-target="#${collapseId}"]`
-                );
-                if (trigger) {
-                    trigger.setAttribute("aria-expanded", "true");
-                    const chevron = trigger.querySelector(".bi-chevron-down");
-                    if (chevron) chevron.classList.add("rotate-180");
-                }
+                toggleChevron(getTrigger(collapseId), true);
             }
         }
-
-        // ✅ collapse 없는 메뉴 클릭 시 상태 제거
-        link.addEventListener("click", () => {
-            const collapseWrapper = link.closest(".collapse");
-            if (!collapseWrapper) {
-                localStorage.removeItem("openCollapse");
-            }
-        });
     });
 });
