@@ -7,7 +7,7 @@
     --accent: #3B82F6;
     --hover-bg: #E0E7FF;
     --section-title-color: #6C757D;
-    --btn-bg: var(--bg-card);
+    --btn-bg: var(--layout-bg);
     --btn-color: var(--text-color);
     --btn-border: #CCCCCC;
     --dropdown-bg: var(--bg-card);
@@ -24,7 +24,7 @@
     --accent: #4EA8FF;
     --hover-bg: #333C4F;
     --section-title-color: #CCCCCC;
-    --btn-bg: var(--bg-card);
+    --btn-bg: var(--layout-bg);
     --btn-color: var(--text-color);
     --btn-border: #444;
     --dropdown-bg: var(--bg-card);
@@ -137,6 +137,22 @@ footer {
 .card-block .btn {
     font-size: 0.85rem;
     border-radius: 8px;
+}
+
+.header .btn {
+    width: 40px;
+    height: 40px;
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border: none; /* 기본 상태에서는 테두리 없음 */
+    transition: border 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.header .btn:hover,
+.header .btn:focus,
+.header .btn:active {
+    border: 1px solid var(--btn-border); /* hover/focus/active 시 테두리 표시 */
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05); /* 선택 시 은은한 강조 효과 */
 }
 
 .dropdown-menu {
