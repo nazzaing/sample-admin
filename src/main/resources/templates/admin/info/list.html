@@ -5,10 +5,91 @@
       layout:decorate="~{fragments/layout}">
 <body>
 <main class="flex-grow-1 px-4 py-4" layout:fragment="content">
-  <div class="container-fluid col-md-10">
-    <h2>Admin Info list</h2>
-    <p>Admin Info list 페이지 입니다.</p>
-  </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-12">
+                <div class="mb-4">
+                    <h4 class="fw-bold">어드민 리스트</h4>
+                    <p class="text-muted">어드민 정보 목록을 조회하고 관리할 수 있습니다.</p>
+                </div>
+
+                <!-- 조회 필터 카드 -->
+                <div class="card-block mb-4 p-3 border rounded">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label" for="adminName">어드민명</label>
+                            <input type="text" class="form-control" id="adminName" placeholder="어드민명을 입력하세요">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="adminManager">담당자</label>
+                            <input type="text" class="form-control" id="adminManager" placeholder="아이디 또는 이름">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label" for="privacyManager">개인정보보호담당자</label>
+                            <input type="text" class="form-control" id="privacyManager" placeholder="아이디 또는 이름">
+                        </div>
+
+                        <!-- 체크박스 + 버튼 영역 -->
+                        <div class="col-md-12 d-flex justify-content-between align-items-center mt-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="excludeCompleted">
+                                <label class="form-check-label" for="excludeCompleted">종료 어드민 제외</label>
+                            </div>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-outline-secondary">등록</button>
+                                <button class="btn btn-primary">검색</button>
+                            </div>
+                        </div>
+
+                        <!-- 현황 문구 영역 -->
+                        <div class="col-md-12 mt-3">
+                            <p class="mb-0 text-muted"><small>개인정보처리시스템 현황 : <span id="systemCount">3개</span></small>
+                            </p>
+                            <p class="mb-0 text-muted"><small>전월 개인정보처리시스템 변경사항 : <span id="systemAdded">0개 추가</span>,
+                                <span id="systemRemoved">0개 종료</span></small></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 테이블 카드 -->
+                <div class="card-block p-3 border rounded">
+                    <!-- 버튼 영역 -->
+                    <div class="d-flex justify-content-end gap-2 mb-3">
+                        <button class="btn btn-outline-success btn-sm" onclick="downloadExcel()">엑셀 다운로드</button>
+                        <button class="btn btn-outline-secondary btn-sm" onclick="downloadSimpleExcel()">엑셀(간편양식) 다운로드
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="adminTable" class="table table-striped table-hover">
+                            <thead>
+                            <tr>
+                                <th>no</th>
+                                <th>어드민명</th>
+                                <th>어드민코드</th>
+                                <th>어드민상태</th>
+                                <th>PASTA 연동상태</th>
+                                <th>어드민 연동확인여부</th>
+                                <th>전사로그 연동상태</th>
+                                <th>상세정보</th>
+                                <th>어드민설명</th>
+                                <th>URL</th>
+                                <th>담당자</th>
+                                <th>개인정보보호담당자</th>
+                                <th>등록일자</th>
+                                <th>최근수정일자</th>
+                                <th>비고</th>
+                                <th>수정/삭제</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+
+            </div> <!-- /.col-12 col-lg-12 -->
+        </div> <!-- /.row -->
+    </div> <!-- /.container -->
+    <script src="/js/admin/admin-info-list.js"></script>
 </main>
 </body>
 </html>

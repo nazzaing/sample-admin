@@ -6,22 +6,18 @@
 <body class="d-flex" style="min-height: 100vh;">
 
 <!-- 사이드바 -->
-<aside th:replace="~{fragments/sidebar :: sidebar}"></aside>
+<aside class="sidebar" th:replace="~{fragments/sidebar :: sidebar}"></aside>
 
 <!-- 메인 영역 -->
-<div class="flex-grow-1 d-flex flex-column">
-
+<div class="main-area">
     <!-- 헤더 -->
     <header th:replace="~{fragments/header :: header}"></header>
 
     <!-- 콘텐츠 -->
-    <main class="flex-grow-1 px-4 py-4" layout:fragment="content">
-    </main>
-
+    <main class="flex-grow-1 px-4 py-4" layout:fragment="content"></main>
 
     <!-- 푸터 -->
     <footer th:replace="~{fragments/footer :: footer}"></footer>
-
 </div>
 
 <!-- 스크립트 -->

@@ -1,7 +1,7 @@
 :root {
     --bg-body: #F3F4F6;
-    --bg-content: #F9FAFB;   /* 메인 영역 배경 */
-    --bg-card: #FFFFFF;      /* 카드 전용 배경 (더 밝게) */
+    --bg-content: #F9FAFB; /* 메인 영역 배경 */
+    --bg-card: #FFFFFF; /* 카드 전용 배경 (더 밝게) */
     --text-color: #2C2C2C;
     --layout-bg: #FFFFFF;
     --accent: #3B82F6;
@@ -13,6 +13,8 @@
     --dropdown-bg: var(--bg-card);
     --dropdown-color: var(--text-color);
     --border-color: #e4e7ec;
+    --sidebar-width: 250px;
+    --container-gap: 200px;
 }
 
 [data-theme="dark"] {
@@ -35,11 +37,23 @@
 body {
     background-color: var(--layout-bg);
     color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
 }
 
 main {
     background-color: var(--bg-content);
     color: var(--text-color);
+}
+
+.container {
+    max-width: calc(100vw - var(--container-gap) - var(--sidebar-width));
+}
+
+.main-area {
+    flex: 1;         /* 나머지 영역은 자동으로 채움 */
+    display: flex;
+    flex-direction: column;
 }
 
 .header {
@@ -57,14 +71,15 @@ footer {
 
 .sidebar {
     background-color: var(--layout-bg);
+    flex: 0 0 250px; /* 사이드바 고정폭 */
 }
 
 .sidebar .nav-link {
-    font-size: 0.85rem;   /* 기본보다 살짝 작게 */
-    line-height: 1.4;     /* 줄 간격 조금 넉넉하게 */
+    font-size: 0.85rem;
+    line-height: 1.4;
     color: var(--text-color);
     border-radius: 6px;
-    padding: 6px 10px;    /* 패딩도 살짝 줄여서 더 컴팩트하게 */
+    padding: 6px 10px;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -86,7 +101,7 @@ footer {
 .sidebar .nav-link.active {
     background-color: var(--hover-bg);
     color: var(--accent);
-    font-weight: 600;     /* bold 대신 semi-bold로 깔끔하게 */
+    font-weight: 600;
 }
 
 .sidebar-section-title {
@@ -106,31 +121,33 @@ footer {
 .card-block {
     background-color: var(--bg-card);
     border: 1px solid #e5e7eb;
-    border-radius: 12px;       /* ← 모서리 더 둥글게 */
-    padding: 1.5rem;           /* p-4와 동일 */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.08); /* 은은한 그림자 */
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    max-width: 100%;
+    overflow-x: auto; /* 내부 테이블이 넘치면 카드 안에서만 스크롤 */
 }
 
 /* 카드 제목 */
 .card-block h5 {
-    font-size: 0.95rem;        /* 사이드바 nav-link보다 살짝 크게 */
-    font-weight: 600;          /* semi-bold */
+    font-size: 0.95rem;
+    font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.75rem;
 }
 
 /* 카드 내부 라벨 */
 .card-block .form-label {
-    font-size: 0.85rem;        /* 사이드바와 동일한 크기 */
-    font-weight: 500;          /* 중간 두께 */
+    font-size: 0.85rem;
+    font-weight: 500;
     color: var(--text-color);
 }
 
 /* 카드 내부 input */
 .card-block .form-control,
 .card-block .form-select {
-    font-size: 0.85rem;        /* 사이드바와 통일 */
-    border-radius: 8px;        /* input도 둥글게 */
+    font-size: 0.85rem;
+    border-radius: 8px;
 }
 
 /* 버튼 */
@@ -144,33 +161,62 @@ footer {
     height: 40px;
     background-color: var(--btn-bg);
     color: var(--btn-color);
-    border: none; /* 기본 상태에서는 테두리 없음 */
+    border: none;
     transition: border 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .header .btn:hover,
 .header .btn:focus,
 .header .btn:active {
-    border: 1px solid var(--btn-border); /* hover/focus/active 시 테두리 표시 */
-    box-shadow: 0 0 0 2px rgba(0,0,0,0.05); /* 선택 시 은은한 강조 효과 */
+    border: 1px solid var(--btn-border);
+    box-shadow: 0 0 0 2px rgba(0,0,0,0.05);
 }
 
 .dropdown-menu {
     background-color: var(--dropdown-bg);
     color: var(--dropdown-color);
-    border-radius: 8px; /* 메뉴 자체도 둥글게 */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.08); /* 기본 그림자 */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     transition: all 0.2s ease;
 }
 
 .dropdown-menu .dropdown-item {
     color: var(--dropdown-color);
-    border-radius: 6px; /* 항목도 둥글게 */
+    border-radius: 6px;
     transition: background-color 0.2s ease, transform 0.15s ease;
 }
 
 .dropdown-menu .dropdown-item:hover {
-    background-color: var(--hover-bg); /* hover 배경 강조 */
-    color: var(--accent);              /* hover 시 포인트 색상 */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12); /* hover 시 그림자 강조 */
+    background-color: var(--hover-bg);
+    color: var(--accent);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* 페이지네이션 중앙 정렬 */
+.dataTables_wrapper .dataTables_paginate {
+    display: flex !important;
+    justify-content: center !important;
+}
+.dataTables_wrapper .dataTables_paginate .pagination {
+    margin: 0;
+}
+
+.dataTable th {
+    text-align: center !important;       /* 가로 가운데 */
+    vertical-align: middle !important;   /* 세로 가운데 */
+}
+
+/* 테이블 헤더 폭 제한 + 말줄임 */
+.dataTable th,
+.dataTable td {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 0.85rem;
+    white-space: nowrap;   /* 줄바꿈 방지 */
+}
+
+/* 테이블 최소 폭 */
+#adminTable {
+    min-width: 1200px;
+    table-layout: fixed; /* 폭 계산을 고정 레이아웃으로 */
 }
