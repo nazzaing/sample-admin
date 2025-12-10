@@ -27,6 +27,11 @@ public class AdminController {
         return "/admin/info/list";
     }
 
+    @GetMapping("/admin/info/sample")
+    public String adminInfoSample() {
+        return "/admin/info/sample";
+    }
+
     @GetMapping("/admin/menu/list")
     public String adminMenuList() {
         return "/admin/menu/list";

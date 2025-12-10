@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      lang="ko"
+      layout:decorate="~{fragments/layout}">
+<body>
+<main class="flex-grow-1 px-4 py-4" layout:fragment="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-12">
+                <div class="mb-4">
+                    <h4 class="fw-bold">어드민 정보 sample</h4>
+                    <p class="text-secondary">어드민 정보를 입력하고 저장할 수 있습니다.</p>
+                </div>
+
+                <form>
+                    <!-- 조회 필터 카드 -->
+                    <div class="card-block mb-4 p-3 border rounded">
+                        <div class="row g-3">
+                            <!-- 기본 정보 -->
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label required" for="adminCode">어드민코드</label>
+                                    <select class="form-select is-invalid" id="adminCode" required>
+                                        <option selected disabled>선택하세요</option>
+                                        <option value="kakao">카카오서비스 (A)</option>
+                                        <option value="test">테스트서비스 (B)</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        어드민코드를 선택해주세요.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required" for="adminName">어드민명</label>
+                                    <input type="text" class="form-control is-invalid" id="adminName" required>
+                                    <div class="invalid-feedback">
+                                        어드민명을 입력해주세요.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label required" for="adminUrl">어드민 URL</label>
+                                    <input type="text" class="form-control is-invalid" id="adminUrl" value="ht:/sample.cm" required>
+                                    <div class="invalid-feedback">
+                                        올바르지 않은 URL 형식입니다.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label required" for="adminDesc">어드민설명</label>
+                                    <input type="text" class="form-control" id="adminDesc" required>
+                                </div>
+                            </div>
+    
+                            <!-- 담당자 정보 -->
+                            <div class="row mt-3">
+                                <div class="col-md-6" style="position: relative;">
+                                    <label class="form-label required" for="adminManager">어드민 담당자</label>
+                                    <input type="text" class="form-control" id="adminManager" placeholder="담당자 검색" autocomplete="off">
+                                    <!-- 선택된 담당자 태그 영역 -->
+                                    <div id="selectedManagers" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="privacyManager">개인정보보호담당자</label>
+                                    <input type="text" class="form-control" id="privacyManager" placeholder="담당자 검색" autocomplete="off">
+                                    <!-- 선택된 담당자 태그 영역 -->
+                                    <div id="selectedPrivacyManagers" class="mt-2 d-flex flex-wrap gap-2"></div>
+                                </div>
+                            </div>
+    
+                            <!-- 기술 정보 -->
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="ip">IP</label>
+                                    <input type="text" class="form-control" id="ip">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="webHost">WEB(HOSTNAME)</label>
+                                    <input type="text" class="form-control" id="webHost">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="webIp">WEB(IP)</label>
+                                    <input type="text" class="form-control" id="webIp">
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="dbHost">DB(HOSTNAME)</label>
+                                    <input type="text" class="form-control" id="dbHost">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="dbIp">DB(IP)</label>
+                                    <input type="text" class="form-control" id="dbIp">
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <label class="form-label" for="note">비고</label>
+                                    <input type="text" class="form-control" id="note">
+                                </div>
+                            </div>
+    
+                            <!-- 상태 정보 -->
+                            <div class="row mt-3">
+                                <div class="col-md-4">
+                                    <label class="form-label" for="privacyYn">개인정보 처리여부</label>
+                                    <select class="form-select" id="privacyYn">
+                                        <option value="Y">예</option>
+                                        <option value="N">아니오</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="adminStatus">어드민 상태</label>
+                                    <select class="form-select" id="adminStatus">
+                                        <option value="active">운영중</option>
+                                        <option value="inactive">종료</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label" for="endDate">어드민 종료일</label>
+                                    <input type="date" class="form-control" id="endDate" value="9999-12-31">
+                                </div>
+                            </div>
+    
+                            <!-- 버튼 영역 -->
+                            <div class="col-md-12 d-flex justify-content-end gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary">저장</button>
+                                <button type="button" class="btn btn-outline-secondary">취소</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="/js/admin/admin-info.js"></script>
+</main>
+</body>
+</html>

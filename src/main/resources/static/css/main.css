@@ -338,3 +338,53 @@ footer {
 .dataTables_wrapper .bottom {
     margin-top: 1rem;   /* 16px 정도 간격 */
 }
+
+.manager-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #3B82F6; /* 파란색: 어드민 담당자 */
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.manager-tag button {
+    border: none;
+    background: transparent;
+    color: #fff;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.privacy-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #FFD43B; /* 노란색: 개인정보보호담당자 */
+    color: #333;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+.privacy-tag button {
+    border: none;
+    background: transparent;
+    color: #333;
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+.list-group-item {
+    background-color: #e7f1ff; /* 파스텔 블루 배경 */
+    color: #333;              /* 글자색 */
+}
+
+.list-group-item:hover {
+    background-color: #cfe2ff; /* hover 시 더 진한 블루 */
+}
+
+label.form-label.required::after {
+    content: " *";
+    color: red;
+}
