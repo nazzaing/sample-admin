@@ -13,6 +13,15 @@
     --dropdown-bg: var(--bg-card);
     --dropdown-color: var(--text-color);
     --border-color: #e4e7ec;
+    --table-border: #dee2e6;
+    --pagination-disabled-bg: #e9ecef;
+    --pagination-disabled-color: #adb5bd;
+    --btn-primary-bg: #3B82F6;
+    --btn-primary-color: #fff;
+    --btn-success-bg: #198754;
+    --btn-success-color: #fff;
+    --btn-secondary-bg: #6C757D;
+    --btn-secondary-color: #fff;
     --sidebar-width: 250px;
     --container-gap: 200px;
 }
@@ -32,6 +41,15 @@
     --dropdown-bg: var(--bg-card);
     --dropdown-color: var(--text-color);
     --border-color: #1d2939;
+    --table-border: #444;
+    --pagination-disabled-bg: #2a2f3a;
+    --pagination-disabled-color: #777;
+    --btn-primary-bg: #4EA8FF;
+    --btn-primary-color: #fff;
+    --btn-success-bg: #2e8b57;
+    --btn-success-color: #fff;
+    --btn-secondary-bg: #999;
+    --btn-secondary-color: #fff;
 }
 
 body {
@@ -115,6 +133,39 @@ footer {
 
 .rotate-180 {
     transform: rotate(180deg);
+}
+
+.btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-color);
+    border: 1px solid var(--btn-border);
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--btn-primary-bg);
+    color: var(--btn-primary-color);
+    border-color: var(--btn-primary-bg);
+}
+
+.btn-outline-success {
+    background-color: transparent;
+    color: var(--btn-success-bg);
+    border: 1px solid var(--btn-success-bg);
+}
+.btn-outline-success:hover {
+    background-color: var(--btn-success-bg);
+    color: var(--btn-success-color);
+}
+
+.btn-outline-secondary {
+    background-color: transparent;
+    color: var(--btn-secondary-bg);
+    border: 1px solid var(--btn-secondary-bg);
+}
+.btn-outline-secondary:hover {
+    background-color: var(--btn-secondary-bg);
+    color: var(--btn-secondary-color);
 }
 
 /* 카드 공통 스타일 */
@@ -201,9 +252,19 @@ footer {
     margin: 0;
 }
 
-.dataTable th {
+/* 테이블 전체 */
+.dataTable {
+    background-color: var(--bg-card);
+    color: var(--text-color);
+}
+
+/* 헤더 */
+.dataTable thead th {
     text-align: center !important;       /* 가로 가운데 */
     vertical-align: middle !important;   /* 세로 가운데 */
+    background-color: var(--bg-content);
+    color: var(--text-color);
+    border-color: var(--border-color);
 }
 
 /* 테이블 헤더 폭 제한 + 말줄임 */
@@ -213,10 +274,67 @@ footer {
     vertical-align: middle;
     font-size: 0.85rem;
     white-space: nowrap;   /* 줄바꿈 방지 */
+    border-color: var(--border-color);
+    background-color: var(--bg-card);
+    color: var(--text-color);
 }
 
 /* 테이블 최소 폭 */
 #adminTable {
     min-width: 1200px;
     table-layout: fixed; /* 폭 계산을 고정 레이아웃으로 */
+}
+
+/* 행 hover (공통) */
+.dataTable tbody tr:hover td {
+    background-color: var(--hover-bg);
+    color: var(--accent);
+}
+
+.dataTable tbody td {
+    border-bottom: 1px solid var(--table-border);
+}
+
+/* tr 양쪽 좌우 끝에 구분선을 준건데 확인해보고 빼는게 이쁘면 빼는걸로 */
+.dataTable td:first-child {
+    border-left: 1px solid var(--table-border);
+}
+.dataTable td:last-child {
+    border-right: 1px solid var(--table-border);
+}
+
+/* DataTable PageNation 테마색 */
+/* 공통 pagination 버튼 */
+.dataTables_wrapper .dataTables_paginate .pagination .page-link {
+    color: var(--text-color);
+    background-color: var(--bg-content);   /* 카드보다 살짝 다른 톤 */
+    border: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+/* hover */
+.dataTables_wrapper .dataTables_paginate .pagination .page-link:hover {
+    background-color: var(--hover-bg);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* active (현재 페이지) */
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.active .page-link {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+}
+
+/* disabled (이전/다음 비활성화) */
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.disabled .page-link {
+    background-color: var(--pagination-disabled-bg);
+    color: var(--pagination-disabled-color);
+    border-color: var(--border-color);
+    cursor: not-allowed;
+}
+
+/* 테이블과 pagination 사이 간격 */
+.dataTables_wrapper .bottom {
+    margin-top: 1rem;   /* 16px 정도 간격 */
 }
