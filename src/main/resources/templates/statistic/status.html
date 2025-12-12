@@ -5,10 +5,88 @@
       layout:decorate="~{fragments/layout}">
 <body>
 <main class="flex-grow-1 px-4 py-4" layout:fragment="content">
-  <div class="container-fluid col-md-10">
-    <h2>개인정보 취급자 현황 list</h2>
-    <p>개인정보 취급자 현황 list 페이지 입니다.</p>
-  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-12">
+        <div class="mb-4">
+          <h4 class="fw-bold">현황</h4>
+          <p class="text-muted">어드민 시스템의 운영 현황과 개인정보 처리 통계를 확인할 수 있습니다.</p>
+        </div>
+
+        <!-- KPI 카드 영역 -->
+        <div class="row mb-4">
+          <div class="col-md-3">
+            <div class="card text-center border-primary">
+              <div class="card-body">
+                <h6 class="card-title text-primary">총 어드민 수</h6>
+                <h3 class="fw-bold" id="totalAdmins">12</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center border-success">
+              <div class="card-body">
+                <h6 class="card-title text-success">운영중</h6>
+                <h3 class="fw-bold" id="activeAdmins">9</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center border-danger">
+              <div class="card-body">
+                <h6 class="card-title text-danger">종료</h6>
+                <h3 class="fw-bold" id="inactiveAdmins">3</h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card text-center border-warning">
+              <div class="card-body">
+                <h6 class="card-title text-warning">개인정보 처리중</h6>
+                <h3 class="fw-bold" id="privacyAdmins">7</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 차트 영역 -->
+        <div class="row">
+          <div class="col-md-6 mb-4">
+            <div class="card p-3 border rounded fixed-height chart-h350">
+              <h6 class="fw-bold mb-3">월별 신규 어드민 등록 현황</h6>
+              <div class="chart-wrapper">
+                <canvas id="monthlyChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-4">
+            <div class="card p-3 border rounded fixed-height chart-h350">
+              <h6 class="fw-bold mb-3">어드민 상태 분포</h6>
+              <div class="chart-wrapper">
+                <canvas id="statusChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 개인정보 취급자 현황 차트 -->
+        <div class="row">
+          <div class="col-md-12 mb-4">
+            <div class="card p-3 border rounded fixed-height chart-h500">
+              <h6 class="fw-bold mb-3">개인정보 취급자 현황 조회</h6>
+              <div class="chart-wrapper">
+                <canvas id="privacyChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div> <!-- /.col-12 -->
+    </div> <!-- /.row -->
+  </div> <!-- /.container -->
+  <!-- Chart.js -->
+  <script src="/js/chartJs/4.5.1/chart.js"></script>
+  <script src="/js/statistic/status.js"></script>
 </main>
 </body>
 </html>

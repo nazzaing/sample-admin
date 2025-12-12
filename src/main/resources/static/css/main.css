@@ -388,3 +388,34 @@ label.form-label.required::after {
     content: " *";
     color: red;
 }
+
+.chart-h350 {
+    height: 350px;
+}
+
+.chart-h500 {
+    height: 500px;
+}
+
+.card.fixed-height h6 {
+    flex: 0 0 auto;
+    margin-bottom: 1rem;
+}
+
+.card.fixed-height .chart-wrapper {
+    flex: 1 1 auto;       /* 남은 공간을 차트가 채움 */
+    display: flex;
+    align-items: center;  /* 차트 중앙 정렬 */
+    justify-content: center;
+    overflow: hidden;     /* 범례가 넘치면 잘라내기 */
+}
+
+.card.fixed-height canvas {
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.card.fixed-height{
+    display: flex;
+    flex-direction: column;
+}
